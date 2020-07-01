@@ -1,0 +1,15 @@
+
+.comment-main-content{
+  width: 400px;
+  height: 160px;
+  border: 2px solid red;
+  margin: 10px 5px ;
+  padding: 5px;
+  overflow: auto;
+}
+.comment-main-content-text{
+  padding: 5px;
+}
+span{
+  font-style: oblique;
+}
