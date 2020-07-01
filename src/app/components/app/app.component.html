@@ -1,1 +1,5 @@
-<app-user *ngFor="let u of users" [user]="u"></app-user>
+<app-user *ngFor="let user of users" [user]='user'></app-user>
+<div class="app-main">
+<app-post *ngFor="let post of posts" [post]="post"></app-post>
+<app-comment *ngFor="let comment of coments" [comment]="comment"></app-comment>
+</div>

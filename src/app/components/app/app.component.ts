@@ -1,25 +1,34 @@
-import {Component} from '@angular/core';
+
+import { Component } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {Post} from '../../models/Post';
+import {Comment} from '../../models/Comment';
+import {User} from '../../models/User';
+
 
 @Component({
-  selector: 'app-xxx',
-  templateUrl: `./app.component.html`,
-  styleUrls: [`app.component.css`]
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
+
+
 export class AppComponent {
-  // private http: HttpClient;
-  // constructor(http: HttpClient) {
-  //   this.http = http;
-  // }
+  posts: Post [];
+  coments: Comment [];
+  users: User [];
 
-  users: any[];
+  constructor( private httpClient: HttpClient){
+    httpClient
+      .get<User[]>('http://jsonplaceholder.typicode.com/users')
+      .subscribe(response => this.users = response);
+    httpClient
+      .get<Post[]>('http://jsonplaceholder.typicode.com/posts')
+      .subscribe(response => this.posts = response);
+    httpClient
+      .get<Comment[]>('https://jsonplaceholder.typicode.com/comments')
+      .subscribe(response => this.coments = response);
 
-  constructor(private httpClient: HttpClient) {
-    this.httpClient
-      .get<any[]>('http://jsonplaceholder.typicode.com/users')
-      .subscribe(response => this.users = response)
-
-    ;
   }
-
 }
+
